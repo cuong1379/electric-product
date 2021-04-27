@@ -1,209 +1,167 @@
-import Head from 'next/head'
+import Head from "next/head";
+import "antd/dist/antd.css";
+import { List, Card, Input, Button, Menu } from "antd";
+import Image from "next/image";
+
+const { Search } = Input;
+const { SubMenu } = Menu;
 
 export default function Home() {
+  const data = [
+    {
+      content: (
+        <div style={{ display: "flex", cursor: "pointer" }}>
+          <svg
+            style={{ width: "30px", marginRight: "15px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+          >
+            <path d="M 16 4 C 9.382813 4 4 9.382813 4 16 C 4 22.617188 9.382813 28 16 28 C 22.617188 28 28 22.617188 28 16 C 28 9.382813 22.617188 4 16 4 Z M 16 6 C 21.535156 6 26 10.464844 26 16 C 26 21.535156 21.535156 26 16 26 C 10.464844 26 6 21.535156 6 16 C 6 10.464844 10.464844 6 16 6 Z M 15 8 L 15 17 L 22 17 L 22 15 L 17 15 L 17 8 Z" />
+          </svg>
+          <div style={{ color: "#7e7e7e" }}>
+            <h3>HẬU MÃI CHU ĐÁO</h3>
+            <p>Chúng tôi luôn lắng nghe</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      content: (
+        <div style={{ display: "flex", cursor: "pointer" }}>
+          <svg
+            style={{ width: "30px", marginRight: "15px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+          >
+            <path d="M 9.5 6 C 8.179688 6 7.003906 6.859375 6.625 8.125 L 5.25 12.71875 L 3.3125 12.0625 L 2.6875 13.9375 L 4.65625 14.59375 L 4.03125 16.71875 C 4.007813 16.808594 3.996094 16.90625 4 17 L 4 24 C 4 24.03125 4 24.0625 4 24.09375 L 4 25 C 4 25.550781 4.449219 26 5 26 L 8 26 L 8.34375 25 L 23.65625 25 L 24 26 L 27 26 C 27.550781 26 28 25.550781 28 25 L 28 24.15625 C 28.003906 24.105469 28.003906 24.050781 28 24 L 28 17 C 28.003906 16.90625 27.992188 16.808594 27.96875 16.71875 L 27.34375 14.59375 L 29.3125 13.9375 L 28.6875 12.0625 L 26.75 12.71875 L 25.375 8.125 C 24.996094 6.859375 23.820313 6 22.5 6 Z M 9.5 8 L 22.5 8 C 22.945313 8 23.339844 8.292969 23.46875 8.71875 L 24.75 13 L 7.25 13 L 8.53125 8.71875 C 8.660156 8.289063 9.054688 8 9.5 8 Z M 11 13 C 12.105469 13 13 12.105469 13 11 C 13 9.894531 12.105469 9 11 9 C 9.894531 9 9 9.894531 9 11 C 9 12.105469 9.894531 13 11 13 Z M 21 13 C 22.105469 13 23 12.105469 23 11 C 23 9.894531 22.105469 9 21 9 C 19.894531 9 19 9.894531 19 11 C 19 12.105469 19.894531 13 21 13 Z M 16 9 C 15.171875 9 14.5 9.671875 14.5 10.5 C 14.5 11.328125 15.171875 12 16 12 C 16.828125 12 17.5 11.328125 17.5 10.5 C 17.5 9.671875 16.828125 9 16 9 Z M 6.65625 15 L 25.34375 15 L 26 17.1875 L 26 23 L 6 23 L 6 17.1875 Z M 8.5 16 C 7.671875 16 7 16.671875 7 17.5 C 7 18.328125 7.671875 19 8.5 19 C 9.328125 19 10 18.328125 10 17.5 C 10 16.671875 9.328125 16 8.5 16 Z M 23.5 16 C 22.671875 16 22 16.671875 22 17.5 C 22 18.328125 22.671875 19 23.5 19 C 24.328125 19 25 18.328125 25 17.5 C 25 16.671875 24.328125 16 23.5 16 Z M 12 19 L 10.75 22 L 12.90625 22 L 13.34375 21 L 18.65625 21 L 19.09375 22 L 21.25 22 L 20 19 Z" />
+          </svg>
+          <div style={{ color: "#7e7e7e" }}>
+            <h3>GIAO HÀNG TẬN NƠI</h3>
+            <p>Đơn hàng từ 5 triệu</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      content: (
+        <div style={{ display: "flex", cursor: "pointer" }}>
+          <svg
+            style={{ width: "30px", marginRight: "15px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+          >
+            <path d="M 2 7 L 2 24 L 30 24 L 30 7 L 2 7 z M 6 9 L 26 9 C 26 10.105 26.895 11 28 11 L 28 20 C 26.895 20 26 20.895 26 22 L 6 22 C 6 20.895 5.105 20 4 20 L 4 11 C 5.105 11 6 10.105 6 9 z M 15 11 C 15 12.439 14.439 13 13 13 L 13 15 C 13.775751 15 14.436786 14.848831 15 14.587891 L 15 20 L 17 20 L 17 11 L 15 11 z M 8.5 14 C 7.672 14 7 14.672 7 15.5 C 7 16.328 7.672 17 8.5 17 C 9.328 17 10 16.328 10 15.5 C 10 14.672 9.328 14 8.5 14 z M 23.5 14 C 22.672 14 22 14.672 22 15.5 C 22 16.328 22.672 17 23.5 17 C 24.328 17 25 16.328 25 15.5 C 25 14.672 24.328 14 23.5 14 z" />
+          </svg>
+          <div style={{ color: "#7e7e7e" }}>
+            <h3>ĐĂNG KÝ ĐẠI LÝ CẤP 2</h3>
+            <p>Đơn giản và tin cậy</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      content: (
+        <div style={{ display: "flex", cursor: "pointer" }}>
+          <svg
+            style={{ width: "30px", marginRight: "15px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+          >
+            <path d="M 22.625 3.03125 C 22.304688 3.0625 21.976563 3.148438 21.65625 3.28125 L 21.65625 3.25 C 21.640625 3.253906 21.609375 3.277344 21.59375 3.28125 C 19.160156 4.136719 14.5 6.28125 10.28125 10.5 C 6.03125 14.75 3.980469 19.496094 3.0625 21.84375 L 3.0625 21.875 C 2.65625 23.089844 2.945313 24.40625 3.75 25.34375 L 3.78125 25.375 L 3.78125 25.40625 L 6.78125 28.375 L 6.90625 28.5 C 7.734375 29.328125 9.171875 29.328125 10 28.5 L 14.09375 24.40625 C 14.921875 23.578125 14.921875 22.109375 14.09375 21.28125 L 12.125 19.3125 C 12.46875 18.597656 13.359375 16.839844 14.9375 15.1875 C 16.503906 13.546875 18.300781 12.710938 19 12.40625 L 21.0625 14.46875 L 21.15625 14.53125 C 21.625 14.84375 22.160156 15.019531 22.71875 15 C 23.242188 14.980469 23.785156 14.722656 24.1875 14.28125 L 24.21875 14.3125 L 24.28125 14.21875 L 28.3125 10.21875 C 29.140625 9.390625 29.140625 7.921875 28.3125 7.09375 L 25.21875 4 C 24.78125 3.5625 24.191406 3.234375 23.5625 3.09375 C 23.257813 3.027344 22.945313 3 22.625 3.03125 Z M 22.78125 5.03125 C 23.160156 5.003906 23.539063 5.164063 23.78125 5.40625 L 26.90625 8.5 C 27.078125 8.671875 27.078125 8.609375 26.90625 8.78125 L 22.71875 12.96875 C 22.722656 12.964844 22.71875 12.996094 22.625 13 C 22.546875 13.003906 22.429688 12.9375 22.3125 12.875 L 22.25 12.875 L 19.90625 10.5 L 19.4375 10.03125 L 18.84375 10.25 C 18.84375 10.25 15.769531 11.398438 13.46875 13.8125 C 11.207031 16.179688 9.96875 19.09375 9.96875 19.09375 L 9.71875 19.71875 L 10.1875 20.21875 L 12.6875 22.71875 C 12.859375 22.890625 12.859375 22.828125 12.6875 23 L 8.59375 27.09375 C 8.421875 27.265625 8.484375 27.265625 8.3125 27.09375 L 5.25 24.0625 C 5.242188 24.054688 5.257813 24.039063 5.25 24.03125 L 5.21875 24 C 4.871094 23.566406 4.765625 23.105469 4.9375 22.5625 C 4.941406 22.550781 4.933594 22.542969 4.9375 22.53125 C 5.824219 20.273438 7.777344 15.847656 11.71875 11.90625 C 15.675781 7.949219 20.164063 5.914063 22.34375 5.15625 L 22.375 5.125 L 22.40625 5.125 C 22.527344 5.070313 22.65625 5.039063 22.78125 5.03125 Z" />
+          </svg>
+          <div style={{ color: "#7e7e7e" }}>
+            <h3>SỬA CHỮA BẢO TRỊ ĐIỆN</h3>
+            <p>Nhanh chóng và tiện lợi</p>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+      <div style={{ maxWidth: "1200px", width: "100%", margin: "auto" }}>
+        <List
+          style={{ width: "100%", marginTop: "50px" }}
+          grid={{ gutter: 16, column: 4 }}
+          dataSource={data}
+          renderItem={(item) => (
+            <List.Item>
+              <Card>{item.content}</Card>
+            </List.Item>
+          )}
+        />
+        <div
+          style={{
+            display: "flex",
+            maxWidth: "1000px",
+            width: "100%",
+            margin: "auto",
+          }}
+        >
+          <div
+            style={{
+              marginRight: "50px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              src="/logo.png"
+              alt="Picture of the author"
+              width={200}
+              height={70}
+            />
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+            <Search
+              style={{ width: "100%" }}
+              placeholder="Tìm sản phẩm"
+              enterButton
+              size="large"
+            />
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Button style={{ height: "40px" }} type="primary">
+              <svg
+                style={{
+                  width: "30",
+                  height: "30px",
+                  fill: "currentcolor",
+                  color: "white",
+                }}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+              >
+                <path d="M 4 7 C 3.449219 7 3 7.449219 3 8 C 3 8.550781 3.449219 9 4 9 L 6.21875 9 L 8.84375 19.5 C 9.066406 20.390625 9.863281 21 10.78125 21 L 23.25 21 C 24.152344 21 24.917969 20.402344 25.15625 19.53125 L 27.75 10 L 25.65625 10 L 23.25 19 L 10.78125 19 L 8.15625 8.5 C 7.933594 7.609375 7.136719 7 6.21875 7 Z M 22 21 C 20.355469 21 19 22.355469 19 24 C 19 25.644531 20.355469 27 22 27 C 23.644531 27 25 25.644531 25 24 C 25 22.355469 23.644531 21 22 21 Z M 13 21 C 11.355469 21 10 22.355469 10 24 C 10 25.644531 11.355469 27 13 27 C 14.644531 27 16 25.644531 16 24 C 16 22.355469 14.644531 21 13 21 Z M 16 7 L 16 10 L 13 10 L 13 12 L 16 12 L 16 15 L 18 15 L 18 12 L 21 12 L 21 10 L 18 10 L 18 7 Z M 13 23 C 13.5625 23 14 23.4375 14 24 C 14 24.5625 13.5625 25 13 25 C 12.4375 25 12 24.5625 12 24 C 12 23.4375 12.4375 23 13 23 Z M 22 23 C 22.5625 23 23 23.4375 23 24 C 23 24.5625 22.5625 25 22 25 C 21.4375 25 21 24.5625 21 24 C 21 23.4375 21.4375 23 22 23 Z" />
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div>
+          <Menu mode="horizontal">
+            <Menu.Item key="mail">Navigation One</Menu.Item>
+            <SubMenu key="SubMenu" title="Navigation Three - Submenu">
+              <Menu.ItemGroup title="Item 1">
+                <Menu.Item key="setting:1">Option 1</Menu.Item>
+                <Menu.Item key="setting:2">Option 2</Menu.Item>
+              </Menu.ItemGroup>
+              <Menu.ItemGroup title="Item 2">
+                <Menu.Item key="setting:3">Option 3</Menu.Item>
+                <Menu.Item key="setting:4">Option 4</Menu.Item>
+              </Menu.ItemGroup>
+            </SubMenu>
+            <Menu.Item key="alipay"></Menu.Item>
+          </Menu>
         </div>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+      <footer></footer>
     </div>
-  )
+  );
 }
